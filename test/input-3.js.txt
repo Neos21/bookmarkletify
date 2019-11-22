@@ -1,0 +1,5 @@
+// With javascript: protocol, Use IIFE
+javascript:((myConsole, log, error) => {
+  myConsole[log]('AAA');
+  myConsole[error]('BBB');
+})(console, 'log', 'error');

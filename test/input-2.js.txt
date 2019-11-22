@@ -1,0 +1,5 @@
+// No javascript: protocol, Use IIFE
+((myConsole, log, error) => {
+  myConsole[log]('AAA');
+  myConsole[error]('BBB');
+})(console, 'log', 'error');

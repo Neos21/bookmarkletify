@@ -1,0 +1,35 @@
+{
+  "name": "@neos21/bookmarkletify",
+  "version": "0.0.0",
+  "description": "Bookmarkletify",
+  "main": "main.js",
+  "bin": {
+    "bookmarkletify": "cli.js"
+  },
+  "scripts": {
+    "start": "node cli.js",
+    "test": "mocha"
+  },
+  "author": "Neo <neos21@gmail.com> (http://neo.s21.xrea.com/)",
+  "license": "MIT",
+  "homepage": "https://github.com/Neos21/bookmarkletify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neos21/bookmarkletify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Neos21/bookmarkletify/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/Neos21"
+  },
+  "dependencies": {
+    "commander": "4.0.1",
+    "uglify-es": "3.3.9"
+  },
+  "devDependencies": {
+    "expect": "24.9.0",
+    "mocha": "6.2.2"
+  }
+}

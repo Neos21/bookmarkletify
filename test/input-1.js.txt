@@ -1,0 +1,2 @@
+// No javascript: protocol, No IIFE
+console.log('AAA');
