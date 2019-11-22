@@ -13,7 +13,7 @@ const bookmarkletify = require('./main');
  */
 function execBookmarkletify(input) {
   const result = bookmarkletify(input);
-  console.log(`\n${result}\n`);
+  console.log(result);
   return process.exit();
 }
 
