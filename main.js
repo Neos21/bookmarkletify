@@ -6,15 +6,15 @@ const uglifyEs = require('uglify-es');
  * @param {string} input JavaScript コード文字列
  */
 function bookmarkletify(input) {
-  let trimedImput = input.trim();
+  let trimmedInput = input.trim();
   
   // javascript: プロトコルが記述されている場合は除去する
-  if(trimedImput.startsWith('javascript:')) {
-    trimedImput = trimedImput.replace((/^javascript:/), '');
+  if(trimmedInput.startsWith('javascript:')) {
+    trimmedInput = trimmedInput.replace((/^javascript:/), '');
   }
   
   // Uglify
-  const result = uglifyEs.minify(trimedImput);
+  const result = uglifyEs.minify(trimmedInput);
   
   if(result.error) {
     throw result.error;
