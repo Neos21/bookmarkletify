@@ -40,7 +40,7 @@ catch(error) {
 
 ## Author
 
-[Neo](http://neo.s21.xrea.com/) ([@Neos21](https://twitter.com/Neos21))
+[Neo](http://neo.s21.xrea.com/)
 
 - [GitHub - bookmarkletify](https://github.com/Neos21/bookmarkletify)
 - [npm - @neos21/bookmarkletify](https://www.npmjs.com/package/@neos21/bookmarkletify)
