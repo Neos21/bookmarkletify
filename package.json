@@ -1,6 +1,6 @@
 {
   "name": "@neos21/bookmarkletify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bookmarkletify",
   "main": "main.js",
   "bin": {
