@@ -1,4 +1,4 @@
-# Bookmarkletify : @neos21/bookmarkletify
+# @neos21/bookmarkletify : Bookmarkletify
 
 [![NPM Version](https://img.shields.io/npm/v/@neos21/bookmarkletify.svg)](https://www.npmjs.com/package/@neos21/bookmarkletify) [![GPR Version](https://img.shields.io/github/package-json/v/neos21/bookmarkletify?label=github)](https://github.com/Neos21/bookmarkletify/packages/327391)
 
