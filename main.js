@@ -1,4 +1,4 @@
-const uglifyEs = require('uglify-es');
+const uglifyJs = require('uglify-js');
 
 /**
  * Bookmarkletify
@@ -14,7 +14,7 @@ function bookmarkletify(input) {
   }
   
   // Uglify
-  const result = uglifyEs.minify(trimmedInput);
+  const result = uglifyJs.minify(trimmedInput);
   
   if(result.error) {
     throw result.error;
