@@ -1,9 +1,9 @@
-const childProcess = require('child_process');
-const fs = require('fs');
+import childProcess from 'node:child_process';
+import fs from 'node:fs';
 
-const expect = require('expect');
+import { expect } from 'expect';
 
-const bookmarkletify = require('../main');
+import { bookmarkletify } from '../index.js';
 
 describe('CLI usage', () => {
   it('input-1.js.txt : No javascript: protocol, No IIFE', (done) => {
