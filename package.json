@@ -1,14 +1,25 @@
 {
   "name": "@neos21/bookmarkletify",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Bookmarkletify",
-  "main": "main.js",
+  "main"  : "./cjs.cjs",
+  "module": "./esm.mjs",
+  "exports": {
+    ".": {
+      "require": "./cjs.cjs",
+      "import" : "./esm.mjs"
+    }
+  },
   "bin": {
-    "bookmarkletify": "cli.js"
+    "bookmarkletify": "./cli.mjs"
   },
   "scripts": {
-    "start": "node cli.js",
-    "test": "mocha"
+    "start": "node ./cli.mjs",
+    "build:browser": "node ./build-for-browser.mjs",
+    "test"    : "npm run test:cjs && npm run test:esm && npm run test:cli",
+    "test:cjs": "node ./tests/from-cjs.cjs",
+    "test:esm": "node ./tests/from-esm.mjs",
+    "test:cli": "node ./tests/from-cli.mjs"
   },
   "author": "Neo <neos21@gmail.com> (https://neos21.net/)",
   "license": "MIT",
@@ -25,11 +36,6 @@
     "url": "https://github.com/sponsors/Neos21"
   },
   "dependencies": {
-    "commander": "4.0.1",
-    "uglify-js": "3.16.1"
-  },
-  "devDependencies": {
-    "expect": "24.9.0",
-    "mocha": "6.2.2"
+    "uglify-js": "3.17.0"
   }
 }

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="ls7kuvIKSqVa_dcixqKvFwl393swvYMkHCkG-xtlCj0">
+    <title>@neos21/bookmarkletify : Bookmarkletify</title>
+    <link rel="icon" href="https://neos21.github.io/favicon.ico">
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP3ZQV2R3M"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP3ZQV2R3M');gtag('config','UA-106501-6');</script>
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6475907504235292" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style>
+
+*, ::before, ::after { box-sizing: border-box; }
+html { font-family: sans-serif; text-decoration-skip-ink: none; cursor: default; }
+
+html, body, #wrapper {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+textarea {
+  font-size: 16px;
+  resize: none;
+}
+
+#wrapper {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "header header"
+                       "main   side  ";
+  gap: .5rem;
+  padding: .5rem;
+}
+
+#header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: .5rem;
+  align-items: end;
+}
+
+#header > h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#header > div {
+  justify-self: center;
+}
+#header > p {
+  margin: 0;
+  justify-self: end;
+  white-space: nowrap;
+}
+#header > p > a > img {
+  vertical-align: bottom;
+}
+
+#input {
+  grid-area: main;
+}
+
+#side {
+  grid-area: side;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  row-gap: .5rem;
+}
+#side > ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  word-break: break-all;
+}
+
+.error {
+  color: #f00;
+}
+
+    </style>
+    <!-- Keep These Orders -->
+    <script src="./lib/minify.js"></script>
+    <script src="./lib/utils.js"></script>
+    <script src="./lib/ast.js"></script>
+    <script src="./lib/parse.js"></script>
+    <script src="./lib/transform.js"></script>
+    <script src="./lib/scope.js"></script>
+    <script src="./lib/output.js"></script>
+    <script src="./lib/compress.js"></script>
+    <script src="./lib/propmangle.js"></script>
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  if(!window.minify) return console.error('Error : window.minify Does Not Exist');
+  
+  /**
+   * Bookmarkletify
+   * 
+   * @param {string} input JavaScript Code
+   * @return {string} Uglified JavaScript Code
+   */
+  const bookmarkletify = (input = '') => {
+    if(Object.prototype.toString.call(input) !== '[object String]') throw new Error('Input is not a string');
+    input = input.trim().replace((/^javascript:/), '');  // Remove `javascript:` Protocol
+    const { code, error } = window.minify(input);  // Use window.minify
+    if(error) throw error;
+    return code.startsWith('(') && code.endsWith(');')  // IIFE
+      ? `javascript:${code}`
+      : `javascript:(()=>{${code.replace((/;$/), '')}})();`;
+  };
+  
+  const inputElement  = document.getElementById('input' );
+  const outputElement = document.getElementById('output');
+  const exec = () => {
+    try {
+      outputElement.classList.remove('error');
+      document.getElementById('output').textContent = bookmarkletify(inputElement.value);
+    }
+    catch(error) {
+      outputElement.classList.add('error');
+      outputElement.textContent = error;
+    }
+  };
+  document.getElementById('exec').addEventListener('click', exec);
+  inputElement.addEventListener('input', exec);
+});
+
+    </script>
+  </head>
+  <body>
+
+<div id="wrapper">
+  <div id="header">
+    <h1>@neos21/bookmarkletify : Bookmarkletify</h1>
+    <div>
+      <button type="button" id="exec">Exec</button>
+    </div>
+    <p>
+      <a href="https://www.npmjs.com/package/@neos21/bookmarkletify"><img src="https://img.shields.io/npm/v/@neos21/bookmarkletify.svg" alt="NPM Version" title="NPM Version"></a>
+      <a href="https://github.com/Neos21/bookmarkletify/pkgs/npm/bookmarkletify"><img src="https://img.shields.io/github/package-json/v/neos21/bookmarkletify?label=github" alt="GPR Version" title="GPR Version"></a>
+    </p>
+  </div>
+  <textarea id="input" placeholder="Input JavaScript Code Here"></textarea>
+  <div id="side">
+    <textarea id="output" placeholder="Output Here" readonly></textarea>
+    <ul>
+      <li><a href="https://neos21.net/">Neo's World</a></li>
+      <li><a href="https://github.com/Neos21/">GitHub - Neos21</a></li>
+      <li><a href="https://github.com/Neos21/bookmarkletify">GitHub - bookmarkletify</a></li>
+      <li><a href="https://neos21.github.io/bookmarkletify">GitHub Pages - @neos21/bookmarkletify : Bookmarkletify</a></li>
+      <li><a href="https://www.npmjs.com/package/@neos21/bookmarkletify">npm - @neos21/bookmarkletify</a></li>
+    </ul>
+  </div>
+</div>
+
+  </body>
+</html>
